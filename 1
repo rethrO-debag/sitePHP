@@ -1,0 +1,37 @@
+<?php
+    $connection = pg_connect("host=localhost port=5432 dbname=school user=postgres password=1234");
+    if (!$connection) {
+        echo "An error occured.<br>";
+        exit;
+    }
+    $result = pg_query($connection, "SELECT name, first_name, second_name, date_of_birth, number_class, letter_class FROM students inner join class on class.class_id = students.class_id");
+    if (!$result) {
+        echo "An error occured.<br>";
+        exit;
+    }
+    ?>
+    <table>
+        <tr>
+            <td>Фамилия</td>
+            <td>Имя</td>
+            <td>Отчество</td>
+            <td>Дата рождения</td>
+            <td>Номер класса</td>
+            <td>Буква класса</td>
+        </tr>
+
+        <?php
+        while ($row = pg_fetch_assoc($result)) {
+            echo "
+                <tr>
+                    <td>$row[first_name]</td>
+                    <td>$row[name]</td>
+                    <td>$row[second_name]</td>
+                    <td>$row[date_of_birth]</td>
+                    <td>$row[number_class]</td>
+                    <td>$row[letter_class]</td>
+                </tr>
+                ";
+        }
+        ?>
+    </table>

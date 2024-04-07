@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,8 @@
 </head>
 
 <body>
-
+    <form action="#" method="post" enctype="multipart/form-data"></form>
+    <input type="text" name="username" value="">
 </body>
 
 </html>
